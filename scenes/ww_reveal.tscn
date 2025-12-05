@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://iq80s6laa5qg"]
+
+[ext_resource type="PackedScene" uid="uid://dkxmyepwo57ye" path="res://ktbashing/WW-reveal.glb" id="1_gk5du"]
+
+[node name="WW-reveal" instance=ExtResource("1_gk5du")]

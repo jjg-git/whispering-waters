@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://ijbrwgqhgnhu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxjpv"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_fxjpv"]
+material = SubResource("StandardMaterial3D_fxjpv")
+inner_radius = 0.048
+outer_radius = 0.078
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bfym8"]
+radius = 0.013
+height = 0.135
+
+[node name="Tracker" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("TorusMesh_fxjpv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08584434, 0)
+mesh = SubResource("CapsuleMesh_bfym8")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09411636, 0)
+mesh = SubResource("CapsuleMesh_bfym8")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.08615632, -0.009872003, 0)
+mesh = SubResource("CapsuleMesh_bfym8")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.08658929, -0.0098719755, 0)
+mesh = SubResource("CapsuleMesh_bfym8")

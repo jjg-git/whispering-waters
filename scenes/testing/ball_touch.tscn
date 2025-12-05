@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://b762437ngpa7q"]
+
+[ext_resource type="Script" uid="uid://dyci5v66i73k4" path="res://scripts/testing/ball.gd" id="1_buivh"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8ky3s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_buivh"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_pqxq3"]
+material = SubResource("StandardMaterial3D_buivh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqxq3"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_buivh"]
+material = SubResource("StandardMaterial3D_pqxq3")
+
+[node name="Ball" type="Area3D"]
+collision_mask = 0
+script = ExtResource("1_buivh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8ky3s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_pqxq3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_buivh")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

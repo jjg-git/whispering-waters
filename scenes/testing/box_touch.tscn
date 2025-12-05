@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://boohtsp1u54th"]
+
+[ext_resource type="Script" uid="uid://ilt42ivb0v3n" path="res://scripts/draggable.gd" id="1_2y8ep"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2y8ep"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2y8ep"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2vb2k"]
+material = SubResource("StandardMaterial3D_2y8ep")
+
+[node name="Box" type="Area3D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_2y8ep")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_2y8ep")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_2vb2k")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

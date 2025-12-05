@@ -1,0 +1,139 @@
+[gd_scene load_steps=19 format=3 uid="uid://cjtdy6ypbj3dx"]
+
+[ext_resource type="Script" uid="uid://c6087eghnf0m8" path="res://scripts/testing/testing_space.gd" id="1_70na4"]
+[ext_resource type="PackedScene" uid="uid://iveojvqcg756" path="res://scenes/player.tscn" id="1_o3b2x"]
+[ext_resource type="PackedScene" uid="uid://de1s3acf5sxhm" path="res://scenes/floor.tscn" id="2_70na4"]
+[ext_resource type="PackedScene" uid="uid://bhjucvb1kf16l" path="res://scenes/statue_body.tscn" id="3_o3b2x"]
+[ext_resource type="Script" uid="uid://c1dxfenmukqut" path="res://scripts/testing/dead_zone.gd" id="4_sa0o0"]
+[ext_resource type="PackedScene" uid="uid://ijbrwgqhgnhu" path="res://scenes/tracker.tscn" id="5_jpy11"]
+[ext_resource type="PackedScene" uid="uid://ca6k8smpqtj4a" path="res://scenes/pressure_plates.tscn" id="6_gyppm"]
+[ext_resource type="PackedScene" uid="uid://b83qavjqfn23" path="res://scenes/pressure_plate.tscn" id="7_y5jhv"]
+[ext_resource type="PackedScene" path="res://ktbashing/WW-reveal.glb" id="8_y5jhv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o3b2x"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_70na4"]
+sky_material = SubResource("ProceduralSkyMaterial_o3b2x")
+
+[sub_resource type="Environment" id="Environment_jpy11"]
+background_mode = 2
+sky = SubResource("Sky_70na4")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_70na4"]
+top_radius = 0.0
+bottom_radius = 0.116
+height = 0.565
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y5jhv"]
+radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyppm"]
+albedo_color = Color(0.7666664, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_y5jhv"]
+material = SubResource("StandardMaterial3D_gyppm")
+radius = 0.309
+height = 0.617
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jpy11"]
+albedo_color = Color(0, 0.63333344, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_fdg8c"]
+material = SubResource("StandardMaterial3D_jpy11")
+radius = 0.309
+height = 0.617
+
+[node name="TestingSpace" type="Node3D"]
+script = ExtResource("1_70na4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jpy11")
+
+[node name="Floor" parent="." instance=ExtResource("2_70na4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.6185322, 0.356, -0.5, -2.172)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Cursor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9096572, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cursor"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_70na4")
+skeleton = NodePath("../..")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "asdfasfasdfasdfasdf"
+
+[node name="Player" parent="." instance=ExtResource("1_o3b2x")]
+transform = Transform3D(0.9958065, 0.022919968, -0.08856709, -0.023977024, 0.9996532, -0.010889567, 0.088286795, 0.012967478, 0.9960107, -0.005446305, 2.730047, -0.3992246)
+
+[node name="Grabber" type="Node3D" parent="Player"]
+
+[node name="DeadZoneArea" type="Area3D" parent="Player/Grabber"]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+script = ExtResource("4_sa0o0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Grabber/DeadZoneArea"]
+shape = SubResource("SphereShape3D_y5jhv")
+
+[node name="BodyOriginArea" type="Area3D" parent="Player/Grabber"]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Grabber/BodyOriginArea"]
+shape = SubResource("SphereShape3D_y5jhv")
+
+[node name="SelectRay" type="RayCast3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
+collision_mask = 2
+
+[node name="Statue" parent="." instance=ExtResource("3_o3b2x")]
+
+[node name="Statue2" parent="." instance=ExtResource("3_o3b2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0957222, 0, -2.2941027)
+
+[node name="Statue3" parent="." instance=ExtResource("3_o3b2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21908092, 0, 2.2974486)
+
+[node name="CollisionPoint" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_y5jhv")
+
+[node name="Tracker" parent="." instance=ExtResource("5_jpy11")]
+
+[node name="ColliderPosition" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_fdg8c")
+
+[node name="PressurePlates" parent="." instance=ExtResource("6_gyppm")]
+
+[node name="Plate" parent="PressurePlates" instance=ExtResource("7_y5jhv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3184276, 4.7683716e-07, 2.1347182)
+
+[node name="Plate2" parent="PressurePlates" instance=ExtResource("7_y5jhv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3184276, 4.7683716e-07, 0.13471818)
+
+[node name="Plate3" parent="PressurePlates" instance=ExtResource("7_y5jhv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.470687, 4.7683716e-07, -2.4270346)
+
+[node name="WW-reveal" parent="." instance=ExtResource("8_y5jhv")]
+transform = Transform3D(0.65293163, 0, -0.75741684, 0, 1, 0, 0.75741684, 0, 0.65293163, 6.795746, 0, -4.2538676)
+
+[connection signal="area_entered" from="Player/Grabber/DeadZoneArea" to="Player/Grabber/DeadZoneArea" method="_on_area_entered"]
+[connection signal="finish" from="PressurePlates" to="." method="_on_pressure_plates_finish"]

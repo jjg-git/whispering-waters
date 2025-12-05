@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b83qavjqfn23"]
+
+[ext_resource type="Script" uid="uid://bshni5m64w4vm" path="res://scripts/pressure_plate.gd" id="1_xtofl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rghlb"]
+size = Vector3(1.0957031, 0.214, 1.0783691)
+
+[node name="Plate" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_xtofl")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.054388188, 0)
+shape = SubResource("BoxShape3D_rghlb")
+debug_color = Color(0, 0.5950001, 0.7, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_area_3d_body_exited"]

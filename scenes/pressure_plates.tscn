@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca6k8smpqtj4a"]
+
+[ext_resource type="Script" uid="uid://dfb4nvbdm7gmx" path="res://scripts/pressure_plates.gd" id="1_snleh"]
+
+[node name="PressurePlates" type="Node3D"]
+script = ExtResource("1_snleh")

@@ -1,0 +1,903 @@
+[gd_scene load_steps=45 format=3 uid="uid://2wrtva36bsv5"]
+
+[ext_resource type="Script" uid="uid://cl0psgghr6lrx" path="res://scripts/main.gd" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://ijbrwgqhgnhu" path="res://scenes/tracker.tscn" id="2_85g3d"]
+[ext_resource type="Script" uid="uid://b0cgyw7ob314h" path="res://scripts/error_message.gd" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://di2mea31vb6kk" path="res://scenes/reveal_shrine_body.tscn" id="4_trceg"]
+[ext_resource type="PackedScene" uid="uid://sunonv3wfwqv" path="res://ktbashing/Whispering-Waters-reveal-arcaeus.glb" id="5_a8y0u"]
+[ext_resource type="Script" uid="uid://5mmhyx8vjts8" path="res://scripts/features_boxes.gd" id="5_o6xl0"]
+[ext_resource type="Theme" uid="uid://deg66mnxlcgeh" path="res://themes/checkboxes.tres" id="5_tefeu"]
+[ext_resource type="PackedScene" uid="uid://ca6k8smpqtj4a" path="res://scenes/pressure_plates.tscn" id="5_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://b83qavjqfn23" path="res://scenes/pressure_plate.tscn" id="6_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://crdlj51btdjwl" path="res://scenes/statue_chrct.tscn" id="7_eb6dy"]
+[ext_resource type="Script" uid="uid://cyt5wcpxet6" path="res://scripts/reference_space.gd" id="7_tipki"]
+[ext_resource type="PackedScene" uid="uid://iveojvqcg756" path="res://scenes/player.tscn" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://b6efi2gw76g15" path="res://ktbashing/Whispering-Waters.glb" id="12_eb6dy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sugp2"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_jyhfs"]
+sky_material = SubResource("ProceduralSkyMaterial_sugp2")
+
+[sub_resource type="Environment" id="Environment_tbgi4"]
+background_mode = 2
+sky = SubResource("Sky_jyhfs")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o5qli"]
+radius = 0.6965
+height = 2.785
+
+[sub_resource type="SphereMesh" id="SphereMesh_sugp2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tipki"]
+albedo_color = Color(1.347661e-06, 0.5617727, 0.87835574, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_85g3d"]
+material = SubResource("StandardMaterial3D_tipki")
+top_radius = 0.0
+bottom_radius = 0.064
+height = 0.627
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85g3d"]
+albedo_color = Color(0, 0.60443074, 0.67134887, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_choun"]
+material = SubResource("StandardMaterial3D_85g3d")
+top_radius = 0.0
+bottom_radius = 0.064
+height = 0.221
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ya4ey"]
+albedo_color = Color(0.96508676, 0, 0.477704, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_eb6dy"]
+material = SubResource("StandardMaterial3D_ya4ey")
+top_radius = 0.0
+bottom_radius = 0.064
+height = 0.627
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trceg"]
+albedo_color = Color(0.9928121, 0, 0.22572929, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a8y0u"]
+material = SubResource("StandardMaterial3D_trceg")
+top_radius = 0.0
+bottom_radius = 0.064
+height = 0.221
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkv2x"]
+albedo_color = Color(0, 1, 0.41666675, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jbj1t"]
+material = SubResource("StandardMaterial3D_jkv2x")
+top_radius = 0.0
+bottom_radius = 0.064
+height = 0.627
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_muem4"]
+albedo_color = Color(0.8909587, 0.863059, 0.05051198, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dp3eg"]
+material = SubResource("StandardMaterial3D_muem4")
+top_radius = 0.0
+bottom_radius = 0.064
+height = 0.221
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eb6dy"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_trceg"]
+material = SubResource("StandardMaterial3D_eb6dy")
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8y0u"]
+albedo_color = Color(1, 0.6333333, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_tbgi4"]
+material = SubResource("StandardMaterial3D_a8y0u")
+radius = 0.15
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yc10j"]
+albedo_color = Color(0.3833332, 0, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vxglm"]
+material = SubResource("StandardMaterial3D_yc10j")
+top_radius = 0.036
+bottom_radius = 0.036
+height = 0.646
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2f3dj"]
+material = SubResource("StandardMaterial3D_yc10j")
+top_radius = 0.036
+bottom_radius = 0.036
+height = 0.206
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbj1t"]
+albedo_color = Color(1, 0, 0.0666666, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_muem4"]
+material = SubResource("StandardMaterial3D_jbj1t")
+top_radius = 0.036
+bottom_radius = 0.036
+height = 0.646
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tipki"]
+material = SubResource("StandardMaterial3D_jbj1t")
+top_radius = 0.036
+bottom_radius = 0.036
+height = 0.206
+
+[sub_resource type="Animation" id="Animation_jkv2x"]
+resource_name = "Reveal"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Arcaeus:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Arcaeus:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-15.156451, -6.0351334, 21.722313), Vector3(-15.156451, 7.012474, 21.722313)]
+}
+
+[sub_resource type="Animation" id="Animation_jbj1t"]
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Arcaeus:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Arcaeus:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-15.156451, -6.0351334, 21.722313), Vector3(-15.156451, 5.9648666, 21.722313)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RevealShrineBody:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-7.7188163, -3.337517, 14.443425), Vector3(-7.7188163, -0.22015703, 14.443425)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_muem4"]
+_data = {
+&"RESET": SubResource("Animation_jbj1t"),
+&"Reveal": SubResource("Animation_jkv2x")
+}
+
+[sub_resource type="Theme" id="Theme_sugp2"]
+default_font_size = 43
+SpinBox/constants/buttons_width = 48
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_0wfyh")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tbgi4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 4, 0)
+visible = false
+shadow_enabled = true
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1567516, 0)
+visible = false
+world_scale = 10.0
+current = true
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(-0.6398415, 0, 0.7685069, 0, 1, 0, -0.7685069, 0, -0.6398415, 0.06717634, -0.027899027, -0.07718253)
+current = true
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19686413, 0)
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19530559, 0)
+shape = SubResource("CapsuleShape3D_o5qli")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D"]
+visible = false
+mesh = SubResource("SphereMesh_sugp2")
+
+[node name="HeadController" type="XRController3D" parent="XROrigin3D"]
+tracker = &"head"
+show_when_tracked = true
+
+[node name="Look" type="Node3D" parent="XROrigin3D/HeadController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9870597)
+visible = false
+
+[node name="CameraDebug" type="Node3D" parent="XROrigin3D/HeadController/Look"]
+unique_name_in_owner = true
+
+[node name="ZVector" type="Node3D" parent="XROrigin3D/HeadController/Look/CameraDebug"]
+
+[node name="Arrow" type="MeshInstance3D" parent="XROrigin3D/HeadController/Look/CameraDebug/ZVector"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.314)
+mesh = SubResource("CylinderMesh_85g3d")
+skeleton = NodePath("../../../../../../Drawings")
+
+[node name="Arrowhead" type="MeshInstance3D" parent="XROrigin3D/HeadController/Look/CameraDebug/ZVector"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.001, 0, 0.60969603)
+mesh = SubResource("CylinderMesh_choun")
+skeleton = NodePath("../../../../../../Drawings")
+
+[node name="XVector" type="Node3D" parent="XROrigin3D/HeadController/Look/CameraDebug"]
+
+[node name="Arrow" type="MeshInstance3D" parent="XROrigin3D/HeadController/Look/CameraDebug/XVector"]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0.314, 0, 0)
+mesh = SubResource("CylinderMesh_eb6dy")
+skeleton = NodePath("../../../../../../Drawings")
+
+[node name="Arrowhead" type="MeshInstance3D" parent="XROrigin3D/HeadController/Look/CameraDebug/XVector"]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0.625, 0, 0)
+mesh = SubResource("CylinderMesh_a8y0u")
+skeleton = NodePath("../../../../../../Drawings")
+
+[node name="YVector" type="Node3D" parent="XROrigin3D/HeadController/Look/CameraDebug"]
+
+[node name="Arrow" type="MeshInstance3D" parent="XROrigin3D/HeadController/Look/CameraDebug/YVector"]
+transform = Transform3D(1.9106857e-15, 7.301438e-30, 1, -4.371139e-08, 1, 1.59578e-37, -1, -4.371139e-08, 1.9106855e-15, 0, 0.314, 0)
+mesh = SubResource("CylinderMesh_jbj1t")
+skeleton = NodePath("../../../../../../Drawings")
+
+[node name="Arrowhead" type="MeshInstance3D" parent="XROrigin3D/HeadController/Look/CameraDebug/YVector"]
+transform = Transform3D(1.9106857e-15, 7.301438e-30, 1, -4.371139e-08, 1, 1.59578e-37, -1, -4.371139e-08, 1.9106855e-15, 0, 0.61, 0)
+mesh = SubResource("CylinderMesh_dp3eg")
+skeleton = NodePath("../../../../../../Drawings")
+
+[node name="Origin" type="MeshInstance3D" parent="XROrigin3D/HeadController/Look/CameraDebug"]
+mesh = SubResource("BoxMesh_trceg")
+
+[node name="XForm" type="Node3D" parent="XROrigin3D/HeadController/Look/CameraDebug"]
+unique_name_in_owner = true
+
+[node name="ZVector" type="Node3D" parent="XROrigin3D/HeadController/Look/CameraDebug/XForm"]
+
+[node name="Arrow" type="MeshInstance3D" parent="XROrigin3D/HeadController/Look/CameraDebug/XForm/ZVector"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.314)
+mesh = SubResource("CylinderMesh_85g3d")
+skeleton = NodePath("../../../../../../../Drawings")
+
+[node name="Arrowhead" type="MeshInstance3D" parent="XROrigin3D/HeadController/Look/CameraDebug/XForm/ZVector"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.001, 0, 0.60969603)
+mesh = SubResource("CylinderMesh_choun")
+skeleton = NodePath("../../../../../../../Drawings")
+
+[node name="XVector" type="Node3D" parent="XROrigin3D/HeadController/Look/CameraDebug/XForm"]
+
+[node name="Arrow" type="MeshInstance3D" parent="XROrigin3D/HeadController/Look/CameraDebug/XForm/XVector"]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0.314, 0, 0)
+mesh = SubResource("CylinderMesh_eb6dy")
+skeleton = NodePath("../../../../../../../Drawings")
+
+[node name="Arrowhead" type="MeshInstance3D" parent="XROrigin3D/HeadController/Look/CameraDebug/XForm/XVector"]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0.625, 0, 0)
+mesh = SubResource("CylinderMesh_a8y0u")
+skeleton = NodePath("../../../../../../../Drawings")
+
+[node name="YVector" type="Node3D" parent="XROrigin3D/HeadController/Look/CameraDebug/XForm"]
+
+[node name="Arrow" type="MeshInstance3D" parent="XROrigin3D/HeadController/Look/CameraDebug/XForm/YVector"]
+transform = Transform3D(1.9106857e-15, 7.301438e-30, 1, -4.371139e-08, 1, 1.59578e-37, -1, -4.371139e-08, 1.9106855e-15, 0, 0.314, 0)
+mesh = SubResource("CylinderMesh_jbj1t")
+skeleton = NodePath("../../../../../../../Drawings")
+
+[node name="Arrowhead" type="MeshInstance3D" parent="XROrigin3D/HeadController/Look/CameraDebug/XForm/YVector"]
+transform = Transform3D(1.9106857e-15, 7.301438e-30, 1, -4.371139e-08, 1, 1.59578e-37, -1, -4.371139e-08, 1.9106855e-15, 0, 0.61, 0)
+mesh = SubResource("CylinderMesh_dp3eg")
+skeleton = NodePath("../../../../../../../Drawings")
+
+[node name="Origin" type="MeshInstance3D" parent="XROrigin3D/HeadController/Look/CameraDebug/XForm"]
+mesh = SubResource("BoxMesh_trceg")
+
+[node name="ZeroPoint" type="MeshInstance3D" parent="XROrigin3D/HeadController/Look"]
+visible = false
+mesh = SubResource("SphereMesh_tbgi4")
+
+[node name="XRRayCast3DSelect" type="RayCast3D" parent="XROrigin3D"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -3.145)
+collision_mask = 3
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="Ray" type="Node3D" parent="XROrigin3D/XRRayCast3DSelect"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRRayCast3DSelect/Ray"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 1.0011961)
+mesh = SubResource("CylinderMesh_vxglm")
+skeleton = NodePath("../..")
+
+[node name="BrokenLine" type="Node3D" parent="XROrigin3D/XRRayCast3DSelect/Ray"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="XROrigin3D/XRRayCast3DSelect/Ray/BrokenLine"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -1.7293087)
+mesh = SubResource("CylinderMesh_2f3dj")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="XROrigin3D/XRRayCast3DSelect/Ray/BrokenLine"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -6.147596e-08, 0, -2.0809102)
+mesh = SubResource("CylinderMesh_2f3dj")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="XROrigin3D/XRRayCast3DSelect/Ray/BrokenLine"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.1397589e-07, 0, -2.3811748)
+mesh = SubResource("CylinderMesh_2f3dj")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="XROrigin3D/XRRayCast3DSelect/Ray/BrokenLine"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.6907168e-07, 0, -2.696286)
+mesh = SubResource("CylinderMesh_2f3dj")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="XROrigin3D/XRRayCast3DSelect/Ray/BrokenLine"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.2368292e-07, 0, -3.008626)
+mesh = SubResource("CylinderMesh_2f3dj")
+skeleton = NodePath("../../..")
+
+[node name="XRRayCast3DDrag" type="RayCast3D" parent="XROrigin3D"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -3.145)
+collision_mask = 3
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="Ray" type="Node3D" parent="XROrigin3D/XRRayCast3DDrag"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRRayCast3DDrag/Ray"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 1.0011961)
+mesh = SubResource("CylinderMesh_muem4")
+skeleton = NodePath("../..")
+
+[node name="BrokenLine" type="Node3D" parent="XROrigin3D/XRRayCast3DDrag/Ray"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="XROrigin3D/XRRayCast3DDrag/Ray/BrokenLine"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -1.7293087)
+mesh = SubResource("CylinderMesh_tipki")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="XROrigin3D/XRRayCast3DDrag/Ray/BrokenLine"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -5.5245494e-08, 0, -2.0452762)
+mesh = SubResource("CylinderMesh_tipki")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="XROrigin3D/XRRayCast3DDrag/Ray/BrokenLine"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.1048115e-07, 0, -2.3611872)
+mesh = SubResource("CylinderMesh_tipki")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="XROrigin3D/XRRayCast3DDrag/Ray/BrokenLine"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.6816813e-07, 0, -2.6911182)
+mesh = SubResource("CylinderMesh_tipki")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="XROrigin3D/XRRayCast3DDrag/Ray/BrokenLine"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.2829235e-07, 0, -3.0349889)
+mesh = SubResource("CylinderMesh_tipki")
+skeleton = NodePath("../../..")
+
+[node name="Touch" type="Marker3D" parent="XROrigin3D"]
+unique_name_in_owner = true
+
+[node name="Holder" type="Marker3D" parent="XROrigin3D/Touch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.39991)
+
+[node name="Trackers" type="Node3D" parent="XROrigin3D"]
+
+[node name="Tracker" parent="XROrigin3D/Trackers" instance=ExtResource("2_85g3d")]
+unique_name_in_owner = true
+
+[node name="Drawings" type="Node3D" parent="."]
+
+[node name="Whispering-Waters" parent="Drawings" instance=ExtResource("12_eb6dy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9171934, -0.0042037964, -7.0417957)
+metadata/_edit_lock_ = true
+
+[node name="RevealShrineBody" parent="Drawings/Whispering-Waters" instance=ExtResource("4_trceg")]
+transform = Transform3D(0.7087094, 0, 0.7055005, 0, 1, 0, -0.7055005, 0, 0.7087094, -7.7188163, -3.337517, 14.443425)
+collision_layer = 32
+collision_mask = 0
+
+[node name="Arcaeus" parent="Drawings/Whispering-Waters" instance=ExtResource("5_a8y0u")]
+transform = Transform3D(0.7071067, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.7071067, -15.156451, -6.0351334, 21.722313)
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Drawings/Whispering-Waters"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_muem4")
+}
+
+[node name="PressurePlates" parent="Drawings" instance=ExtResource("5_ya4ey")]
+
+[node name="Plate" parent="Drawings/PressurePlates" instance=ExtResource("6_eb6dy")]
+transform = Transform3D(0.75470954, 0, -0.6560591, 0, 1, 0, 0.6560591, 0, 0.75470954, -0.85736895, -0.40548822, 6.571108)
+
+[node name="Plate2" parent="Drawings/PressurePlates" instance=ExtResource("6_eb6dy")]
+transform = Transform3D(0.75470954, 0, -0.6560591, 0, 1, 0, 0.6560591, 0, 0.75470954, -2.3672767, -0.40548822, 8.135868)
+
+[node name="Plate3" parent="Drawings/PressurePlates" instance=ExtResource("6_eb6dy")]
+transform = Transform3D(0.75470954, 0, -0.6560591, 0, 1, 0, 0.6560591, 0, 0.75470954, -3.7506523, -0.40548822, 9.735283)
+
+[node name="Plate4" parent="Drawings/PressurePlates" instance=ExtResource("6_eb6dy")]
+transform = Transform3D(0.75470954, 0, -0.6560591, 0, 1, 0, 0.6560591, 0, 0.75470954, -6.625296, -0.40548822, 1.0522418)
+
+[node name="CollisionShape3D2" parent="Drawings/PressurePlates/Plate4" index="0"]
+transform = Transform3D(0.98425734, 0, 0.17674118, 0, 1, 0, -0.17674118, 0, 0.98425734, -0.08243995, 0.054388188, -0.39196777)
+
+[node name="Plate5" parent="Drawings/PressurePlates" instance=ExtResource("6_eb6dy")]
+transform = Transform3D(0.75470954, 0, -0.6560591, 0, 1, 0, 0.6560591, 0, 0.75470954, -8.135204, -0.40548822, 2.617002)
+
+[node name="CollisionShape3D2" parent="Drawings/PressurePlates/Plate5" index="0"]
+transform = Transform3D(0.9947601, 0, 0.10223697, 0, 1, 0, -0.10223697, 0, 0.9947601, 0.0015166998, 0.054388188, -0.19064605)
+
+[node name="Plate6" parent="Drawings/PressurePlates" instance=ExtResource("6_eb6dy")]
+transform = Transform3D(0.75470954, 0, -0.6560591, 0, 1, 0, 0.6560591, 0, 0.75470954, -9.5185795, -0.40548822, 4.216417)
+
+[node name="CollisionShape3D2" parent="Drawings/PressurePlates/Plate6" index="0"]
+transform = Transform3D(0.9947565, 0, 0.1022717, 0, 1, 0, -0.1022717, 0, 0.9947565, 0.06508144, 0.054388188, -0.018839892)
+
+[node name="Statues" type="Node3D" parent="Drawings"]
+
+[node name="Statue" parent="Drawings/Statues" instance=ExtResource("7_eb6dy")]
+transform = Transform3D(-0.6892656, 0, -0.7245087, 0, 1, 0, 0.7245087, 0, -0.6892656, -1.9144487, 0, 5.8464932)
+
+[node name="Statue2" parent="Drawings/Statues" instance=ExtResource("7_eb6dy")]
+transform = Transform3D(-0.6892656, 0, -0.7245087, 0, 1, 0, 0.7245087, 0, -0.6892656, -3.8303823, 0, 7.0005174)
+
+[node name="Statue4" parent="Drawings/Statues" instance=ExtResource("7_eb6dy")]
+transform = Transform3D(-0.6892656, 0, -0.7245087, 0, 1, 0, 0.7245087, 0, -0.6892656, -4.9055824, 0, 1.8610616)
+
+[node name="Statue5" parent="Drawings/Statues" instance=ExtResource("7_eb6dy")]
+transform = Transform3D(-0.6892656, 0, -0.7245087, 0, 1, 0, 0.7245087, 0, -0.6892656, -6.801347, 0, 3.8930411)
+
+[node name="Statue6" parent="Drawings/Statues" instance=ExtResource("7_eb6dy")]
+transform = Transform3D(-0.6892656, 0, -0.7245087, 0, 1, 0, 0.7245087, 0, -0.6892656, -9.18132, 0, 5.6357546)
+
+[node name="Statue3" parent="Drawings/Statues" instance=ExtResource("7_eb6dy")]
+transform = Transform3D(-0.6892656, 0, -0.7245087, 0, 1, 0, 0.7245087, 0, -0.6892656, -5.1312256, 0, 9.576178)
+
+[node name="Startup" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Startup"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2951389
+anchor_top = 0.11574074
+anchor_right = 0.6041667
+anchor_bottom = 0.37808642
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Start" type="Button" parent="Startup/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_tefeu")
+text = "Start to experience"
+metadata/_edit_use_anchors_ = true
+
+[node name="Restart" type="Button" parent="Startup/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_tefeu")
+text = "Restart"
+metadata/_edit_use_anchors_ = true
+
+[node name="ErrorMessage" type="TextEdit" parent="Startup"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21226737
+anchor_top = 0.33459264
+anchor_right = 0.80600005
+anchor_bottom = 0.5011852
+offset_left = -0.53201294
+offset_top = 0.18395996
+offset_right = 0.48791504
+offset_bottom = 0.23199463
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("5_tefeu")
+placeholder_text = "Last message here"
+editable = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AttemptLabel" type="Label" parent="Startup"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3942639
+anchor_top = 0.048086427
+anchor_right = 0.60573614
+anchor_bottom = 0.14808643
+offset_left = -0.1920166
+offset_top = -0.16000366
+offset_right = 0.19195557
+offset_bottom = 0.039993286
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_tefeu")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+text = "Attempt: #"
+metadata/_edit_use_anchors_ = true
+
+[node name="TabContainer" type="TabContainer" parent="Startup"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.41358024
+anchor_right = 1.0
+anchor_bottom = 0.8981481
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("5_tefeu")
+current_tab = 0
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Requested Reference Space" type="Control" parent="Startup/TabContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+metadata/_tab_index = 0
+
+[node name="ReqFeatsLabel" type="Label" parent="Startup/TabContainer/Requested Reference Space"]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 51.0
+grow_horizontal = 2
+theme = ExtResource("5_tefeu")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+text = "Requested Reference Space:"
+autowrap_mode = 2
+
+[node name="RequestedBoxes" type="FlowContainer" parent="Startup/TabContainer/Requested Reference Space"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.38431373
+anchor_right = 1.0
+anchor_bottom = 0.6156863
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_tipki")
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="UnboundedChkBx" type="CheckBox" parent="Startup/TabContainer/Requested Reference Space/RequestedBoxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_tefeu")
+text = "unbounded"
+
+[node name="ViewerChkBx" type="CheckBox" parent="Startup/TabContainer/Requested Reference Space/RequestedBoxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_tefeu")
+text = "viewer"
+
+[node name="LocalFloorChkBx" type="CheckBox" parent="Startup/TabContainer/Requested Reference Space/RequestedBoxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_tefeu")
+text = "local-floor
+"
+
+[node name="LocalChkBx" type="CheckBox" parent="Startup/TabContainer/Requested Reference Space/RequestedBoxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_tefeu")
+text = "local"
+
+[node name="Required Features" type="Control" parent="Startup/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+metadata/_tab_index = 1
+
+[node name="ReqFeatsLabel" type="Label" parent="Startup/TabContainer/Required Features"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = -14.067017
+offset_bottom = 40.0
+theme = ExtResource("5_tefeu")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+text = "Required features (space reference):"
+autowrap_mode = 2
+
+[node name="RequiredBoxes" type="FlowContainer" parent="Startup/TabContainer/Required Features"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.38431373
+anchor_right = 1.0
+anchor_bottom = 0.6156863
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_o6xl0")
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="UnboundedChkBx" type="CheckBox" parent="Startup/TabContainer/Required Features/RequiredBoxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_tefeu")
+text = "unbounded"
+
+[node name="ViewerChkBx" type="CheckBox" parent="Startup/TabContainer/Required Features/RequiredBoxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_tefeu")
+text = "viewer"
+
+[node name="LocalFloorChkBx" type="CheckBox" parent="Startup/TabContainer/Required Features/RequiredBoxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_tefeu")
+text = "local-floor
+"
+
+[node name="LocalChkBx" type="CheckBox" parent="Startup/TabContainer/Required Features/RequiredBoxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_tefeu")
+text = "local"
+
+[node name="Optional Features" type="Control" parent="Startup/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+metadata/_tab_index = 2
+
+[node name="OptFeatsLabel" type="Label" parent="Startup/TabContainer/Optional Features"]
+visible = false
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 213.0
+grow_horizontal = 2
+theme = ExtResource("5_tefeu")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+text = "Optional features (space reference):"
+autowrap_mode = 2
+
+[node name="OptionalBoxes" type="FlowContainer" parent="Startup/TabContainer/Optional Features"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.38431373
+anchor_right = 1.0
+anchor_bottom = 0.6156863
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_o6xl0")
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="UnboundedChkBx" type="CheckBox" parent="Startup/TabContainer/Optional Features/OptionalBoxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_tefeu")
+text = "unbounded"
+
+[node name="ViewerChkBx" type="CheckBox" parent="Startup/TabContainer/Optional Features/OptionalBoxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_tefeu")
+text = "viewer"
+
+[node name="LocalFloorChkBx" type="CheckBox" parent="Startup/TabContainer/Optional Features/OptionalBoxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_tefeu")
+text = "local-floor
+"
+
+[node name="LocalChkBx" type="CheckBox" parent="Startup/TabContainer/Optional Features/OptionalBoxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_tefeu")
+text = "local"
+
+[node name="AR_UI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Debug" type="Control" parent="AR_UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OpenOption" type="Button" parent="AR_UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -159.99988
+offset_top = -636.0
+offset_right = -8.999878
+offset_bottom = -525.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("5_tefeu")
+text = "Settings"
+
+[node name="OptionPanel" type="Panel" parent="AR_UI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DebugText" type="Label" parent="AR_UI/OptionPanel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.023899317
+anchor_top = 0.0290371
+anchor_right = 0.98478127
+anchor_bottom = 0.9828642
+offset_left = -125.509384
+offset_top = -84.22817
+offset_right = -124.44537
+offset_bottom = -84.308136
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 22
+text = "asdfasdfasdf"
+autowrap_mode = 1
+text_direction = 1
+script = ExtResource("3_sugp2")
+metadata/_edit_use_anchors_ = true
+
+[node name="OptionsVBox" type="VBoxContainer" parent="AR_UI/OptionPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08666666
+anchor_top = 0.054012347
+anchor_right = 0.91333324
+anchor_bottom = 0.88979596
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="WorldScaleHBox" type="HBoxContainer" parent="AR_UI/OptionPanel/OptionsVBox"]
+layout_mode = 2
+
+[node name="WSLabel" type="Label" parent="AR_UI/OptionPanel/OptionsVBox/WorldScaleHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "world scale:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="WSSpinner" type="SpinBox" parent="AR_UI/OptionPanel/OptionsVBox/WorldScaleHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_sugp2")
+min_value = 0.2
+step = 0.2
+value = 10.0
+
+[node name="CloseOption" type="Button" parent="AR_UI/OptionPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -130.00012
+offset_top = -111.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("5_tefeu")
+text = "Close"
+
+[node name="Player" parent="." instance=ExtResource("10_choun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4024844, 0.27149582, 1.3281403)
+
+[connection signal="finish" from="Drawings/PressurePlates" to="." method="_on_pressure_plates_finish"]
+[connection signal="button_up" from="Startup/VBoxContainer/Restart" to="." method="_on_restart_button_up"]
+[connection signal="feature_changed" from="Startup/TabContainer/Requested Reference Space/RequestedBoxes" to="." method="_on_requested_box_feature_changed"]
+[connection signal="feature_changed" from="Startup/TabContainer/Required Features/RequiredBoxes" to="." method="_on_required_boxes_feature_changed"]
+[connection signal="feature_changed" from="Startup/TabContainer/Optional Features/OptionalBoxes" to="." method="_on_optional_boxes_feature_changed"]
+[connection signal="pressed" from="AR_UI/OpenOption" to="." method="_on_open_option_pressed"]
+[connection signal="value_changed" from="AR_UI/OptionPanel/OptionsVBox/WorldScaleHBox/WSSpinner" to="." method="_on_ws_spinner_value_changed"]
+[connection signal="pressed" from="AR_UI/OptionPanel/CloseOption" to="." method="_on_close_option_pressed"]
+
+[editable path="Drawings/PressurePlates/Plate3"]
+[editable path="Drawings/PressurePlates/Plate4"]
+[editable path="Drawings/PressurePlates/Plate5"]
+[editable path="Drawings/PressurePlates/Plate6"]

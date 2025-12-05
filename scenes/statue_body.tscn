@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhjucvb1kf16l"]
+
+[ext_resource type="Script" uid="uid://bxum0dshuhgtv" path="res://scripts/statue_body.gd" id="1_vqyb6"]
+[ext_resource type="PackedScene" uid="uid://c5s4koiuyfsx0" path="res://ktbashing/WW-statue.glb" id="1_yungl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vqyb6"]
+size = Vector3(0.8015137, 2.9549408, 0.89508057)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wevi0"]
+size = Vector3(0.8027954, 0.17004395, 0.91467285)
+
+[node name="Statue" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 6
+script = ExtResource("1_vqyb6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03503418, 1.4763565, 0.011566162)
+shape = SubResource("BoxShape3D_vqyb6")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.031158447, 0.07110596, 0.008605957)
+shape = SubResource("BoxShape3D_wevi0")
+
+[node name="WW-statue" parent="." instance=ExtResource("1_yungl")]

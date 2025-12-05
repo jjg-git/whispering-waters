@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://do58iobxjw6dw"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_k5nrt"]
+height = 0.664
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t76o2"]
+top_radius = 0.25
+bottom_radius = 0.0
+height = 0.812
+
+[sub_resource type="SphereMesh" id="SphereMesh_t76o2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k5nrt"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_l5lq6"]
+material = SubResource("StandardMaterial3D_k5nrt")
+top_radius = 0.072
+bottom_radius = 0.072
+height = 0.227
+
+[node name="Ghost" type="MeshInstance3D"]
+transform = Transform3D(0.712, 0, 0, 0, 0.712, 0, 0, 0, 0.712, 0, 0.41970104, 0)
+mesh = SubResource("CylinderMesh_k5nrt")
+
+[node name="Spikes" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22867632, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16602427, -0.48049325, -0.1664308)
+mesh = SubResource("CylinderMesh_t76o2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18776572, -0.48049325, 0.16811937)
+mesh = SubResource("CylinderMesh_t76o2")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18010938, -0.48049325, 0.16659701)
+mesh = SubResource("CylinderMesh_t76o2")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1657027, -0.48049325, -0.17571674)
+mesh = SubResource("CylinderMesh_t76o2")
+skeleton = NodePath("../..")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32133043, 0)
+mesh = SubResource("SphereMesh_t76o2")
+
+[node name="Eyes" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Eyes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15315628, 0.31781143, 0.48853958)
+mesh = SubResource("CylinderMesh_l5lq6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Eyes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17653, 0.31974846, 0.48853958)
+mesh = SubResource("CylinderMesh_l5lq6")
