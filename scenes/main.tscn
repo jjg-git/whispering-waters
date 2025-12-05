@@ -132,34 +132,6 @@ top_radius = 0.036
 bottom_radius = 0.036
 height = 0.206
 
-[sub_resource type="Animation" id="Animation_jkv2x"]
-resource_name = "Reveal"
-length = 10.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Arcaeus:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(2),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Arcaeus:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(2, 10),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-15.156451, -6.0351334, 21.722313), Vector3(-15.156451, 7.012474, 21.722313)]
-}
-
 [sub_resource type="Animation" id="Animation_jbj1t"]
 length = 10.0
 tracks/0/type = "value"
@@ -199,6 +171,46 @@ tracks/2/keys = {
 "values": [Vector3(-7.7188163, -3.337517, 14.443425), Vector3(-7.7188163, -0.22015703, 14.443425)]
 }
 
+[sub_resource type="Animation" id="Animation_jkv2x"]
+resource_name = "Reveal"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Arcaeus:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Arcaeus:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-15.156451, -6.0351334, 21.722313), Vector3(-15.156451, 7.012474, 21.722313)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RevealShrineBody:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-7.7188163, -7.1220374, 14.443425), Vector3(-7.7188163, -0.027407646, 14.443425)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_muem4"]
 _data = {
 &"RESET": SubResource("Animation_jbj1t"),
@@ -221,13 +233,11 @@ visible = false
 shadow_enabled = true
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1567516, 0)
+transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, 1.7968245, 3.1008687, -1.3138607)
 visible = false
-world_scale = 10.0
 current = true
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
-transform = Transform3D(-0.6398415, 0, 0.7685069, 0, 1, 0, -0.7685069, 0, -0.6398415, 0.06717634, -0.027899027, -0.07718253)
 current = true
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="XROrigin3D"]
@@ -446,7 +456,6 @@ metadata/_edit_lock_ = true
 [node name="RevealShrineBody" parent="Drawings/Whispering-Waters" instance=ExtResource("4_trceg")]
 transform = Transform3D(0.7087094, 0, 0.7055005, 0, 1, 0, -0.7055005, 0, 0.7087094, -7.7188163, -3.337517, 14.443425)
 collision_layer = 32
-collision_mask = 0
 
 [node name="Arcaeus" parent="Drawings/Whispering-Waters" instance=ExtResource("5_a8y0u")]
 transform = Transform3D(0.7071067, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.7071067, -15.156451, -6.0351334, 21.722313)

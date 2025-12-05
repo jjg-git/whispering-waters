@@ -18,6 +18,8 @@ radius = 0.843
 height = 0.001
 
 [node name="RevealShrineBody" type="AnimatableBody3D"]
+collision_layer = 0
+collision_mask = 0
 
 [node name="Slope" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.8657023, 0.5005216, 0.0061328034, -0.5005591, 0.86563736, 0.010606503, 0, -0.012251905, 0.99992496, 1.942053, -0.64453715, -0.38740394)
