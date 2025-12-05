@@ -95,6 +95,7 @@ click={
 3d_physics/layer_3="floor"
 3d_physics/layer_4="deadzone"
 3d_physics/layer_5="body_detector"
+3d_physics/layer_6="platform"
 
 [rendering]
 

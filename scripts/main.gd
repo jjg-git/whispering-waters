@@ -105,7 +105,8 @@ func _physics_process(_delta: float) -> void:
 				#selected_object.drag(%Touch/Holder.transform * xform)
 			var final_transform: Transform3D = selected_object.global_transform
 			final_transform.origin = %Touch/Holder.global_transform.origin
-			selected_object.drag(final_transform)
+			#selected_object.drag(final_transform)
+			selected_object.transform = final_transform
 			
 
 
