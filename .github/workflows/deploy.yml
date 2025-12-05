@@ -45,11 +45,7 @@ jobs:
           sed -i -e "s@$FIND@$REPLACE@" index.html
           
           FIND="function loadFetch(file, tracker, fileSize, raw) {"
-          REPLACE=$FIND" var p_file = file"
-          sed -i -e "s@$FIND@$REPLACE@" index.js
-          
-          FIND="return fetch(file).then(function (response) {"
-          REPLACE="if(file.endsWith(".wasm")||file.endsWith(".pck")){file+=".gz"}"$FIND
+          REPLACE=$FIND" var p_file = file if(file.endsWith(".wasm")||file.endsWith(".pck")){file+=".gz"}"
           sed -i -e "s@$FIND@$REPLACE@" index.js
 
           FIND="getTrackedResponse(response, tracker[file]);"
