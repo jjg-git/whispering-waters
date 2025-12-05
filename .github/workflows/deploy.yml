@@ -43,12 +43,34 @@ jobs:
           FIND="<script type='text/javascript' src='index.js'></script>"
           REPLACE="<script type=\"text/javascript\" src=\"pako_inflate.min.js\"></script>$FIND"
           sed -i -e "s@$FIND@$REPLACE@" index.html
+          
           FIND="function loadFetch(file, tracker, fileSize, raw) {"
-          REPLACE=$FIND" var p_file=file if(file.endsWith(".wasm")||file.endsWith(".pck")){file+=".gz"}tracker[file]={total:fileSize||0,loaded:0,done:false,};return fetch(file).then(function(response){if(!response.ok){return Promise.reject(new Error(`Failed loading file'${file}'`))}const tr=getTrackedResponse(response,tracker[p_file]);return Promise.resolve(tr.arrayBuffer().then(buffer=>{return new Response(pako.inflate(buffer),{headers:tr.headers})}))})}
+          REPLACE=$FIND" var p_file = file"
           sed -i -e "s@$FIND@$REPLACE@" index.js
-          FIND="this.preload=function(pathOrBuffer,destPath,fileSize){let buffer=null;if(typeof pathOrBuffer==='string'){const me=this;return this.loadPromise(pathOrBuffer,fileSize).then(function(buf){me.preloadedFiles.push({path:destPath||pathOrBuffer,buffer:buf,});return Promise.resolve()})}else if(pathOrBuffer instanceof ArrayBuffer){buffer=new Uint8Array(pathOrBuffer)}else if(ArrayBuffer.isView(pathOrBuffer)){buffer=new Uint8Array(pathOrBuffer.buffer)}if(buffer){this.preloadedFiles.push({path:destPath,buffer:pathOrBuffer,});return Promise.resolve()}return Promise.reject(new Error('Invalid object for preloading'))};"
-          REPLACE="this.preload=function(pathOrBuffer,destPath,fileSize){let buffer=null;if(typeof pathOrBuffer==='string'){const me=this;return this.loadPromise(pathOrBuffer,fileSize).then(function(buf){buf.arrayBuffer().then(data=>{me.preloadedFiles.push({path:destPath||pathOrBuffer,buffer:data,})})return Promise.resolve()})}else if(pathOrBuffer instanceof ArrayBuffer){buffer=new Uint8Array(pathOrBuffer)}else if(ArrayBuffer.isView(pathOrBuffer)){buffer=new Uint8Array(pathOrBuffer.buffer)}if(buffer){this.preloadedFiles.push({path:destPath,buffer:pathOrBuffer,});return Promise.resolve()}return Promise.reject(new Error('Invalid object for preloading'))};"
+          
+          FIND="return fetch(file).then(function (response) {"
+          REPLACE="if(file.endsWith(".wasm")||file.endsWith(".pck")){file+=".gz"}"$FIND
           sed -i -e "s@$FIND@$REPLACE@" index.js
+
+          FIND="getTrackedResponse(response, tracker[file]);"
+          REPLACE="getTrackedResponse(response, tracker[p_file]);"
+          sed -i -e "s@$FIND@$REPLACE@" index.js
+          
+          FIND="if (raw) {"
+          REPLACE="return Promise.resolve(tr.arrayBuffer().then( buffer => {"
+          sed -i -e "s@$FIND@$REPLACE@" index.js
+
+          FIND="return Promise.resolve(tr);"
+          REPLACE="return new Response(pako.inflate(buffer), { headers: tr.headers }) }))"
+          sed -i -e "s@$FIND@$REPLACE@" index.js
+          
+          FIND="me.preloadedFiles.push({"
+          REPLACE="buf.arrayBuffer().then(data => {"$FIND
+          sed -i -e "s@$FIND@$REPLACE@" index.js
+          
+          FIND="return Promise.resolve();"
+          REPLACE="}) "$FIND
+          sed -i -e "s@$FIND@$REPLACE@3" index.js
 
       - name: Add coi-service-worker
         run: |
